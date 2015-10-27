@@ -1,0 +1,24 @@
+# Ignore dot files, except git stuff
+.*
+!.git*
+!.eslintrc
+!.jscsrc
+!.babelrc
+
+# Logs
+logs
+*.log
+npm-debug.log.*
+
+# Dependency directory
+node_modules
+bower_components
+
+# Sound files
+src/sounds
+
+# Distribution directory
+build
+
+# Data
+src/scripts/sounds.json
