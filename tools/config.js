@@ -11,7 +11,8 @@ if (!DEBUG) {
 
 export default {
   entry: {
-    index: "./src/scripts/index"
+    index: "./src/scripts/index",
+    background: "./src/scripts/background"
   },
   output: {
     filename: "[name].js",
