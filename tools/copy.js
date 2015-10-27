@@ -8,6 +8,7 @@ export default task("copy", async () => {
   await Promise.all([
     copy("src/data", "build/data"),
     copy("src/i18n", "build/i18n"),
+    copy("src/icons", "build/icons"),
     copy("src/favicons", "build/favicons"),
     copy("src/bg", "build/bg"),
     copy("src/browser_action", "build/browser_action")
