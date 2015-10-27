@@ -1,16 +1,33 @@
-// if you checked "fancy-settings" in extensionizr.com, uncomment this lines
+import howler from "howler";
+import {Map} from "immutable";
 
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
+let howls = new Map();
 
+function setHowl(sound) {
+  return new howler.Howl({
+    src: [sound.file],
+    html5: true,
+    loop: true,
+    volume: sound.volume,
+    autoplay: sound.playing
+  });
+}
 
-// example of using a message handler from the inject scripts
-// chrome.extension.onMessage.addListener(
-//   function(request, sender, sendResponse) {
-//   	chrome.pageAction.show(sender.tab.id);
-//     sendResponse();
-//   });
-
-// const audio = new Audio("http://data.kakapo.co/sounds/wind.mp3");
-// audio.play();
+chrome.extension.onMessage.addListener(req => {
+  if (req.action === "set") {
+    if (!howls.get(req.sound.file)) howls = howls.set(req.sound.file, setHowl(req.sound));
+  }
+  if (req.action === "mute") {
+    howls.map(_h => _h.mute(req.status));
+  }
+  if (req.action === "playpause") {
+    if (req.sound.playing) {
+      howls.get(req.sound.file).pause();
+    } else {
+      howls.get(req.sound.file).play();
+    }
+  }
+  if (req.action === "volume") {
+    howls.get(req.sound.file).volume(req.status);
+  }
+});

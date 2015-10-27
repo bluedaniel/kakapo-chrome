@@ -2,12 +2,10 @@ import Reflux from "reflux";
 import {Map} from "immutable";
 import axios from "axios";
 import throttle from "lodash/function/throttle";
-import { createSoundObj } from "../api";
 import { soundActions } from "../actions";
 import { toasterInstance } from "../utils";
 
 let sounds = new Map(JSON.parse(localStorage.getItem("sounds")));
-let howls = new Map();
 let mute = false;
 
 const SoundStore = Reflux.createStore({
@@ -31,47 +29,43 @@ const SoundStore = Reflux.createStore({
     });
   },
 
-  getHowl(_s) {
-    return new Promise(resolve => {
-      const currentHowl = howls.get(_s.file);
-      if (currentHowl) return resolve(currentHowl);
-      createSoundObj(_s)
-        .then(res => howls = howls.set(_s.file, res))
-        .then(() => resolve(howls.get(_s.file)));
-    });
-  },
-
   setSounds(data) {
-    data.forEach(_s => sounds = sounds.set(_s.file, {..._s, ...{ recentlyDownloaded: false }}));
-    this.setAutoPlay();
-    this.trigger(sounds);
-  },
-
-  setAutoPlay() {
-    sounds.forEach(_s => {
-      if (_s.playing) this.getHowl(_s).then(howl => howl.play());
+    data.forEach(_s => {
+      sounds = sounds.set(_s.file, {..._s, ...{ recentlyDownloaded: false }});
+      chrome.extension.sendMessage({
+        sound: _s,
+        action: "set"
+      });
     });
     if (mute) this.onToggleMute(mute);
+    this.trigger(sounds);
   },
 
   onToggleMute(muteToggle) {
     mute = muteToggle;
-    sounds.forEach(_s => this.getHowl(_s).then(howl => howl.mute(muteToggle)));
+    chrome.extension.sendMessage({
+      action: "mute",
+      status: mute
+    });
   },
 
   onTogglePlayPause(sound) {
     sounds = sounds.update(sound.file, _s => ({..._s, ...{ playing: !_s.playing }}));
-    this.getHowl(sound).then(howl => {
-      if (sound.playing) return howl.pause();
-      howl.play();
-      if (mute) toasterInstance().then(_t => _t.toast("Kakapo is currently muted!"));
+    chrome.extension.sendMessage({
+      sound: sound,
+      action: "playpause"
     });
+    if (mute && !sound.playing) toasterInstance().then(_t => _t.toast("Kakapo is currently muted!"));
     this.trigger(sounds);
   },
 
   onChangeVolume(sound, volume) {
     sounds = sounds.update(sound.file, _s => ({..._s, ...{ volume: volume }}));
-    this.getHowl(sound).then(howl => howl.volume(volume));
+    chrome.extension.sendMessage({
+      sound: sound,
+      action: "volume",
+      status: volume
+    });
     this.trigger(sounds);
   }
 });
