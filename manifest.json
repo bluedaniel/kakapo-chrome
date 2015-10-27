@@ -9,7 +9,6 @@
     "48": "build/favicons/icon48.png",
     "128": "build/favicons/icon128.png"
   },
-  "default_locale": "en",
   "background": {
     "page": "build/bg/background.html",
     "persistent": false

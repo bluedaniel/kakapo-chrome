@@ -73,54 +73,6 @@ const SoundStore = Reflux.createStore({
     sounds = sounds.update(sound.file, _s => ({..._s, ...{ volume: volume }}));
     this.getHowl(sound).then(howl => howl.volume(volume));
     this.trigger(sounds);
-  },
-
-  onEditSound(sound, newData) {
-    let opts = { editing: !sound.editing };
-    if (typeof (newData) !== "undefined") opts = {...opts, ...newData};
-    sounds = sounds.update(sound.file, _s => ({..._s, ...opts}));
-    this.trigger(sounds);
-  },
-
-  onRemoveSound(sound) {
-    this.getHowl(sound).then(howl => howl.unload());
-    sounds = sounds.delete(sound.file);
-    this.trigger(sounds);
-  },
-
-  soundDownloaded(sound) {
-    toasterInstance().then(_t => _t.toast(`${sound.name} has been added.`));
-    sounds = sounds.set(sound.file, {...sound, ...{ progress: 1 }});
-    this.trigger(sounds);
-    howls = howls.set(sound.file, createSoundObj(sound));
-    if (mute) this.onToggleMute(mute);
-  },
-
-  // SoundCloud Listeners
-  onGetSoundCloudURLCompleted(sound) {
-    this.soundDownloaded(sound);
-  },
-
-  onGetSoundCloudURLFailed(error) {
-    toasterInstance().then(_t => _t.toast(error));
-  },
-
-  // YouTube Listeners
-  onGetYoutubeURLCompleted(sound) {
-    this.soundDownloaded(sound);
-  },
-
-  onGetYoutubeURLFailed(error) {
-    toasterInstance().then(_t => _t.toast(error));
-  },
-
-  // Custom url Listeners
-  onGetCustomURLCompleted(sound) {
-    this.soundDownloaded(sound);
-  },
-
-  onGetCustomURLFailed(error) {
-    toasterInstance().then(_t => _t.toast(error));
   }
 });
 

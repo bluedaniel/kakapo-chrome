@@ -14,13 +14,15 @@
 @import "./search";
 @import "./media";
 
+html,
+body {
+  width: 300px;
+}
+
 body {
   margin: 0 auto;
   max-width: 100%;
-  padding-top: 105px;
-  @media (min-width: 550px) {
-    padding-top: 136px;
-  }
+  padding-top: 35px;
 }
 .container {
   padding-left: 0;

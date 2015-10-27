@@ -2,7 +2,7 @@ import React from "react";
 import Reflux from "reflux";
 import Rx from "rx";
 import { Settings, Sounds, Theme } from "../stores";
-import { Header, Nav, SoundList } from "../components";
+import { Nav, SoundList } from "../components";
 import "../styles/base.css";
 
 export const Konami = Rx.Observable.fromEvent(window, "keyup")
@@ -29,7 +29,6 @@ export default React.createClass({
     return (
       <div className="wrapper">
         <Nav {...this.state.settings.intlData}/>
-        <Header {...this.state.settings.intlData}/>
         <div className="container">
           <SoundList sounds={this.state.sounds} {...this.state.settings.intlData}/>
           {this.props.children && React.cloneElement(this.props.children, {...this.state.settings.intlData})}

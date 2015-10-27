@@ -23,9 +23,6 @@ export default React.createClass({
           "muted": this.state.mute,
           "dark": this.state.theme.darkUI
         })} onClick={this.handleMute}/>
-        <a className="download-app" href="http://www.kakapo.co/app.html" target="_blank">
-          {this.getIntlMessage("nav.app")}
-        </a>
         <a className="facebook" href="https://www.facebook.com/dialog/share?app_id=1663218660581932&redirect_uri=http://kakapo.co&href=http://kakapo.co" target="_blank"/>
         <a className="twitter" href="https://twitter.com/intent/tweet?text=Kakapo&url=http://kakapo.co" target="_blank"/>
         <a className="email" href="mailto:?subject=Kakapo&body=http://kakapo.co" target="_blank"/>

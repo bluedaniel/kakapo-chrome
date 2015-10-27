@@ -1,9 +1,9 @@
 import Reflux from "reflux";
-import {Map} from "immutable";
+import { Map } from "immutable";
 import React, { PropTypes } from "react";
 import CSSTransitionGroup from "react-addons-css-transition-group";
 import PureRenderMixin from "react-addons-pure-render-mixin";
-import {SoundItem, SoundEdit} from "../";
+import { SoundItem } from "../";
 import { Settings } from "../../stores";
 import "./soundList.css";
 
@@ -16,21 +16,16 @@ export default React.createClass({
     return arr
       .toArray()
       .filter(_s => _s.progress === 1)
-      .map(_s => {
-        let item = <SoundItem key={_s.file} {..._s} {...this.state.settings.intlData}/>;
-        if (_s.editing) {
-          item = <SoundEdit key={_s.file + "editing"} {..._s} {...this.state.settings.intlData}/>;
-        }
-        return (
-          <div key={_s.file}>
-            <CSSTransitionGroup
-              transitionEnterTimeout={450}
-              transitionLeaveTimeout={450}
-              transitionName="list-animation">
-              {item}
-            </CSSTransitionGroup>
-          </div>);
-      });
+      .map(_s => (
+        <div key={_s.file}>
+          <CSSTransitionGroup
+            transitionEnterTimeout={450}
+            transitionLeaveTimeout={450}
+            transitionName="list-animation">
+            <SoundItem key={_s.file} {..._s} {...this.state.settings.intlData}/>
+          </CSSTransitionGroup>
+        </div>)
+      );
   },
   render() {
     const sounds = this.props.sounds;

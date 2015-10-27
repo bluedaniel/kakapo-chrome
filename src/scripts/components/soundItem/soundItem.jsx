@@ -20,44 +20,12 @@ export default React.createClass({
     waves.ripple(this.refs.item);
     soundActions.togglePlayPause(this.props);
   },
-  handleDelete(el) {
-    this.handleStopPropagation(el);
-    soundActions.removeSound(this.props);
-  },
-  handleEdit(el) {
-    this.handleStopPropagation(el);
-    soundActions.editSound(this.props);
-  },
   handleChangeVolume() {
     soundActions.changeVolume(this.props, parseFloat(this.refs.volume.value));
   },
   handleStopPropagation(el) {
     el.preventDefault();
     el.stopPropagation();
-  },
-  renderActions() {
-    return (
-      <ul className="actions" style={this.state.theme.soundList.actions}>
-        {this.props.link ? (
-          <li>
-            <a href={this.props.link} target="_blank">
-              <i className={classNames("icon-share", {
-                "dark": !this.props.playing
-              })}/>
-            </a>
-          </li>) : ""}
-        {this.props.source !== "youtubeStream" ? (
-          <li onClick={this.handleEdit}>
-            <i className={classNames("icon-pencil", {
-              "dark": !this.props.playing
-            })}/></li>) : ""}
-        <li onClick={this.handleDelete}>
-          <i className={classNames("icon-trash", {
-            "dark": !this.props.playing
-          })}/>
-        </li>
-      </ul>
-    );
   },
   renderVideo() {
     if (this.props.source === "youtubeStream") {
@@ -88,7 +56,6 @@ export default React.createClass({
       >
         <div className="inner">
           <Image img={img}/>
-          {this.renderActions()}
           <span className="title">
             {this.props.name}
           </span>
