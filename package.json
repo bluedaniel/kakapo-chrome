@@ -1,6 +1,6 @@
 {
   "name": "kakapo-chrome",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A background noise extension",
   "devDependencies": {
     "axios": "^0.7.0",
