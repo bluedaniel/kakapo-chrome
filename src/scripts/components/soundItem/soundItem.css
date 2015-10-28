@@ -39,6 +39,7 @@
     }
   }
   &.playing {
+    color: #fff;
     [type=range] {
       display: block;
     }

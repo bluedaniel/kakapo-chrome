@@ -27,26 +27,15 @@ export default React.createClass({
     el.preventDefault();
     el.stopPropagation();
   },
-  renderVideo() {
-    if (this.props.source === "youtubeStream") {
-      return (
-        <div className="youtube-video" id={`video-${this.props.file}`}></div>
-      );
-    }
-  },
   render() {
     let objStyle = this.state.theme.soundList.item;
     if (this.props.playing) objStyle = {...objStyle, ...this.state.theme.soundList.itemPlaying};
     // Image size is relative to the volume
     const itemClass = classNames({
       "playing": this.props.playing,
-      "paused": !this.props.playing,
-      "youtube-stream": this.props.source === "youtubeStream"
+      "paused": !this.props.playing
     });
-    let img = this.props.img;
-    if (this.props.source === "file") {
-      img = "http://data.kakapo.co/images/" + (this.props.playing ? "light-" : "dark-") + this.props.img.replace(/^.*[\\\/]/, "");
-    }
+    const img = "http://data.kakapo.co/images/" + (this.props.playing ? "light-" : "dark-") + this.props.img.replace(/^.*[\\\/]/, "");
     return (
       <div
         className={classNames("item", "waves-effect", "waves-block", itemClass)}
@@ -70,7 +59,6 @@ export default React.createClass({
             type="range"
           />
         </div>
-        {this.renderVideo()}
       </div>
     );
   }

@@ -26,7 +26,7 @@ export default React.createClass({
       <a className="facebook" href="https://www.facebook.com/dialog/share?app_id=1663218660581932&redirect_uri=http://kakapo.co&href=http://kakapo.co" target="_blank" tabIndex="-1"/>
         <a className="twitter" href="https://twitter.com/intent/tweet?text=Kakapo&url=http://kakapo.co" target="_blank" tabIndex="-1"/>
         <a className="email" href="mailto:?subject=Kakapo&body=http://kakapo.co" target="_blank" tabIndex="-1"/>
-        <a className="github" href="http://github.com/bluedaniel/kakapo-web" target="_blank" tabIndex="-1"/>
+        <a className="github" href="http://github.com/bluedaniel/kakapo-chrome" target="_blank" tabIndex="-1"/>
       </div>
     );
   }
