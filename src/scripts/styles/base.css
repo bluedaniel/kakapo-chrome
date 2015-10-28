@@ -10,9 +10,6 @@
 @import "./switch";
 @import "./toast";
 @import "./spinner";
-@import "./modal";
-@import "./search";
-@import "./media";
 
 html,
 body {
@@ -27,16 +24,4 @@ body {
 .container {
   padding-left: 0;
   padding-right: 0;
-}
-.hint--top,
-.hint--bottom {
-  &,
-  &:hover,
-  &:focus {
-    &:after,
-    &:before {
-      margin-left: 0;
-      transform: translate(-50%, 8px);
-    }
-  }
 }
