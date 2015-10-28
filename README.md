@@ -12,7 +12,7 @@ It's built with [ReactJS](https://github.com/facebook/react) in ES6. It also use
 - [HowlerJs](https://github.com/goldfire/howler.js) - Handles audio objects.
 - [Webpack](https://github.com/webpack/webpack) for building.
 
-<img src="http://www.kakapo.co/images/chrome-screenshot.png" width="728" height="533" />
+<img src="http://www.kakapo.co/images/chrome-screenshot.png" width="500" height="654" />
 
 ## Install and build
 Simply clone the repo, install dependencies and run the npm build task.
