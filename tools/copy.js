@@ -1,11 +1,13 @@
 // import path from "path";
 import task from "./lib/task";
 import copy from "./lib/copy";
+import fs from "fs-extra";
 
 // import watch from "./lib/watch";
 
 export default task("copy", async () => {
   await Promise.all([
+    fs.copySync("manifest.json", "build/manifest.json"),
     copy("src/data", "build/data"),
     copy("src/i18n", "build/i18n"),
     copy("src/icons", "build/icons"),

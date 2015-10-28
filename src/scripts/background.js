@@ -3,6 +3,15 @@ import {Map} from "immutable";
 
 let howls = new Map();
 
+function updateIcon() {
+  let count = 0;
+  howls.map(_h => _h.playing() ? count++ : null);
+  chrome.browserAction.setBadgeBackgroundColor({ color: "#333333" });
+  chrome.browserAction.setBadgeText({ text: count ? `${count}` : "" });
+  chrome.browserAction.setIcon({ path: { 38: `/favicons/${count ? "icon76" : "icon76-inactive"}.png` }});
+}
+updateIcon();
+
 function setHowl(sound) {
   return new howler.Howl({
     src: [sound.file],
@@ -30,4 +39,5 @@ chrome.extension.onMessage.addListener(req => {
   if (req.action === "volume") {
     howls.get(req.sound.file).volume(req.status);
   }
+  updateIcon();
 });

@@ -5,18 +5,17 @@
   "description": "A Chrome extension of Kakapo",
   "homepage_url": "http://kakapo.co",
   "icons": {
-    "16": "build/favicons/icon16.png",
-    "48": "build/favicons/icon48.png",
-    "128": "build/favicons/icon128.png"
+    "48": "favicons/icon48.png",
+    "128": "favicons/icon128.png"
   },
   "background": {
-    "page": "build/bg/background.html",
+    "page": "bg/background.html",
     "persistent": false
   },
   "browser_action": {
-    "default_icon": "build/favicons/icon19.png",
+    "default_icon": "favicons/icon76.png",
     "default_title": "Kakapo for Chrome",
-    "default_popup": "build/browser_action/browser_action.html"
+    "default_popup": "browser_action/browser_action.html"
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
