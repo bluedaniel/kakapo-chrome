@@ -1,12 +1,18 @@
+import semver from "semver";
 import Reflux from "reflux";
 import {Map} from "immutable";
 import axios from "axios";
 import throttle from "lodash/function/throttle";
 import { soundActions } from "../actions";
 import { toasterInstance } from "../utils";
+import packageJson from "../../../package.json";
 
-let sounds = new Map(JSON.parse(localStorage.getItem("sounds")));
 let mute = false;
+let sounds = new Map(JSON.parse(localStorage.getItem("sounds")));
+let version = localStorage.getItem("version");
+
+if (semver.lte(version || "0.0.1", packageJson.version)) sounds.clear();
+localStorage.setItem("version", packageJson.version);
 
 const SoundStore = Reflux.createStore({
   listenables: [soundActions],
