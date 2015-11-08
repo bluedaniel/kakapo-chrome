@@ -1,7 +1,7 @@
 import Reflux from "reflux";
 import axios from "axios";
 import { windowActions } from "../actions";
-import langEn from "../../i18n/en.json";
+import kakapoAssets from "kakapo-assets";
 
 export default Reflux.createStore({
   listenables: [windowActions],
@@ -9,7 +9,7 @@ export default Reflux.createStore({
     const lang = localStorage.getItem("language") || "en";
     this.opts = {
       lang: lang,
-      intlData: langEn
+      intlData: kakapoAssets.i18n.en
     };
     if (lang !== "en") {
       this.onChangeLanguage(lang);
@@ -21,7 +21,7 @@ export default Reflux.createStore({
   },
 
   onChangeLanguage(lang) {
-    axios.get(`http://data.kakapo.co/i18n/${lang}.json`)
+    axios.get(`http://data.kakapo.co/v2/i18n/${lang}.json`)
       .then(response => {
         localStorage.setItem("language", lang);
         this.opts = {

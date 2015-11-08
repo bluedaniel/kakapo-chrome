@@ -35,7 +35,7 @@ export default React.createClass({
       "playing": this.props.playing,
       "paused": !this.props.playing
     });
-    const img = "http://data.kakapo.co/images/" + (this.props.playing ? "light-" : "dark-") + this.props.img.replace(/^.*[\\\/]/, "");
+    const img = "http://data.kakapo.co/v2/images/" + (this.props.playing ? "light_" : "dark_") + this.props.img.replace(/^.*[\\\/]/, "") + ".png";
     return (
       <div
         className={classNames("item", "waves-effect", "waves-block", itemClass)}

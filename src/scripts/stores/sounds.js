@@ -24,7 +24,7 @@ const SoundStore = Reflux.createStore({
         new Promise(res => window.onYouTubeIframeAPIReady = res(true))
           .then(resolve(sounds));
       }
-      axios.get("http://data.kakapo.co/data/sounds.json")
+      axios.get("http://data.kakapo.co/v2/data/sounds.json")
         .then(resp => resolve(resp.data));
     });
   },

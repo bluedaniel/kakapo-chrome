@@ -1,11 +1,11 @@
 import Reflux from "reflux";
 import { themeActions } from "../actions";
-import defaultTheme from "../../data/theme.json";
+import kakapoAssets from "kakapo-assets";
 
 const Theme = Reflux.createStore({
   listenables: [themeActions],
   init() {
-    this.styles = JSON.parse(localStorage.getItem("theme")) || defaultTheme;
+    this.styles = JSON.parse(localStorage.getItem("theme")) || kakapoAssets.theme;
   },
 
   getInitialState() {

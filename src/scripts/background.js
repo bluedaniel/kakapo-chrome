@@ -1,5 +1,6 @@
-import howler from "howler";
 import {Map} from "immutable";
+import howler from "howler";
+import path from "path";
 
 let howls = new Map();
 
@@ -14,7 +15,7 @@ updateIcon();
 
 function setHowl(sound) {
   return new howler.Howl({
-    src: [sound.file],
+    src: [`http://data.kakapo.co/v2/sounds/${path.basename(sound.file)}.m4a`],
     html5: true,
     loop: true,
     volume: sound.volume,
