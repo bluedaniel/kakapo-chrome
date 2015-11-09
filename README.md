@@ -2,7 +2,7 @@
 
 [Kakapo](http://kakapo.co) is an open source ambient sound mixer for relaxation or productivity, available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/kakapo-for-chrome/hjbpmbeapabclfmopcoblnhcglplffmp).
 
-See also: [Kakapo for Web](https://github.com/bluedaniel/Kakapo-web) - [Kakapo for Desktop](https://github.com/bluedaniel/Kakapo-app) - [Kakapo for iOS](https://github.com/bluedaniel/Kakapo-native).
+See also: [Kakapo for Web](https://github.com/bluedaniel/Kakapo-web) - [Kakapo for Desktop](https://github.com/bluedaniel/Kakapo-app) - [Kakapo for iOS & Android](https://github.com/bluedaniel/Kakapo-native).
 
 It's built with [ReactJS](https://github.com/facebook/react) in ES6. It also uses some of the following frameworks/libraries:
 
