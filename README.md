@@ -1,8 +1,8 @@
-<img src="http://www.kakapo.co/icons/social/kakapo.png" width="128" height="128" align="right" />
+<img src="https://raw.githubusercontent.com/bluedaniel/Kakapo-assets/master/icons/social/kakapo.png" width="128" height="128" align="right" />
 
 [Kakapo](http://kakapo.co) is an open source ambient sound mixer for relaxation or productivity, available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/kakapo-for-chrome/hjbpmbeapabclfmopcoblnhcglplffmp).
 
-See also: [Kakapo for Web](https://github.com/bluedaniel/Kakapo-web) - [Kakapo for Desktop](https://github.com/bluedaniel/Kakapo-app) - [Kakapo for iOS & Android](https://github.com/bluedaniel/Kakapo-native).
+See also: [Kakapo for Desktop & Web](https://github.com/bluedaniel/Kakapo-app) - [Kakapo for iOS & Android](https://github.com/bluedaniel/Kakapo-native).
 
 It's built with [ReactJS](https://github.com/facebook/react) in ES6. It also uses some of the following frameworks/libraries:
 
@@ -12,7 +12,7 @@ It's built with [ReactJS](https://github.com/facebook/react) in ES6. It also use
 - [HowlerJs](https://github.com/goldfire/howler.js) - Handles audio objects.
 - [Webpack](https://github.com/webpack/webpack) for building.
 
-<img src="http://www.kakapo.co/images/chrome-screenshot.png" width="500" height="654" />
+<img src="https://raw.githubusercontent.com/bluedaniel/Kakapo-assets/master/images/screenshots/chrome.png" width="500" height="654" />
 
 ## Install and build
 Simply clone the repo, install dependencies and run the npm build task.
@@ -30,7 +30,6 @@ $ npm run build release
 ```
 
 To add the local extension to Chrome, go to `Settings > Load unpacked extension` and point to the `kakapo-chrome/build` folder.
-
 
 ## Contribute
 You are most welcome to do with this repo what you will :smile:.
