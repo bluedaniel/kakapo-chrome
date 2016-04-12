@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/bluedaniel/Kakapo-assets/master/icons/social/kakapo.png" width="128" height="128" align="right" />
+<img src="https://raw.githubusercontent.com/bluedaniel/Kakapo-assets/master/images/kakapo_border.png" width="128" height="128" align="right" />
 
 [Kakapo](http://kakapo.co) is an open source ambient sound mixer for relaxation or productivity, available on the [Chrome Web Store](https://chrome.google.com/webstore/detail/kakapo-for-chrome/hjbpmbeapabclfmopcoblnhcglplffmp).
 
